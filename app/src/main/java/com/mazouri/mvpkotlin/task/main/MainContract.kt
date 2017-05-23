@@ -18,6 +18,6 @@ object MainContract {
     }
 
     abstract class Presenter: BasePresenter<View>() {
-        abstract fun loadRepositories()
+        abstract fun loadRepositories(repoUser: String?)
     }
 }

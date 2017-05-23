@@ -3,4 +3,5 @@
 
     <string name="internet_connection_unavailable">Internet connection unavailable</string>
     <string name="server_error">Server error</string>
+    <string name="text_edit_hint">输入Github用户名</string>
 </resources>

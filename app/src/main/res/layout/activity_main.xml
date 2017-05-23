@@ -6,11 +6,38 @@
     android:layout_height="match_parent"
     tools:context="com.mazouri.mvpkotlin.task.main.MainActivity">
 
+    <EditText
+        android:id="@+id/edit"
+        android:layout_width="200dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:hint="@string/text_edit_hint"
+        android:textColor="#88000000"
+        android:layout_height="wrap_content" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewRepositories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:listitem="@layout/item_repository"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:indeterminate="true"
+        android:visibility="gone"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:src="@mipmap/ic_github"
+        android:layout_gravity="bottom|end"/>
 
 </android.support.design.widget.CoordinatorLayout>
