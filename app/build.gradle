@@ -21,6 +21,7 @@ android {
     }
 }
 
+//为Dagger创建了需要的自生成类
 kapt {
      generateStubs = true
 }

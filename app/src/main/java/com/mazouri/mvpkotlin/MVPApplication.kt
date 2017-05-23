@@ -38,7 +38,6 @@ class MVPApplication : Application() {
         }
 
     companion object {
-
         operator fun get(context: Context): MVPApplication {
             return context.applicationContext as MVPApplication
         }

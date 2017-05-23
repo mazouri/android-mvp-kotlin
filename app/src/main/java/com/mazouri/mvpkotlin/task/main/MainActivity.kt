@@ -1,6 +1,5 @@
 package com.mazouri.mvpkotlin.task.main
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.mazouri.mvpkotlin.R
@@ -47,19 +46,15 @@ class MainActivity : BaseActivity(), MainContract.View {
         mAdapter?.notifyDataSetChanged()
     }
 
+    override fun showLoadReposFailed(error: String?) {
+
+    }
+
     override fun showError(error: String?) {
 
     }
 
     override fun showError(stringResId: Int) {
-
-    }
-
-    override fun showMessage(srtResId: Int) {
-
-    }
-
-    override fun showMessage(message: String) {
 
     }
 

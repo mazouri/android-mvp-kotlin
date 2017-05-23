@@ -1,8 +1,8 @@
 package com.mazouri.mvpkotlin.task.main
 
 import com.mazouri.mvpkotlin.data.ApiSettings
-import com.mazouri.mvpkotlin.data.GeneralErrorHandler
 import com.mazouri.mvpkotlin.data.GithubServiceFactory
+import com.mazouri.mvpkotlin.data.model.Repository
 import com.mazouri.mvpkotlin.injection.ConfigPersistent
 import rx.android.schedulers.AndroidSchedulers
 import rx.functions.Action1
@@ -24,11 +24,21 @@ class MainPresenter @Inject constructor(): MainContract.Presenter() {
         GithubServiceFactory.makeStarterService().getUserRepos(USER_NAME, REPOS_TYPE, ApiSettings.REPOS_SORT_BY_UPDATED)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnError { view?.showMessage(it.toString()) }
-                .subscribe(Action1 { view?.showOrganizations(it) }
-                        , GeneralErrorHandler(view, true, {
-                    throwable, _, _ -> view?.showError(throwable.message)
-                }))
+                .doOnError { view?.showError(it.toString()) }
+                .subscribe(
+                        { onLoadReposSuccess(it) },
+                        { onLoadReposFailed(it) }
+                )
     }
+
+    private fun onLoadReposSuccess(it: MutableList<Repository>) {
+        view?.showOrganizations(it)
+    }
+
+    private fun onLoadReposFailed(it: Throwable) {
+        view?.showLoadReposFailed(it.message)
+    }
+
+
 
 }
